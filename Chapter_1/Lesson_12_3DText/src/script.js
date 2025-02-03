@@ -25,7 +25,7 @@ const scene = new THREE.Scene();
  * Textures
  */
 const textureLoader = new THREE.TextureLoader();
-const matcapTexture = textureLoader.load("/textures/matcaps/8.png");
+const matcapTexture = textureLoader.load("textures/matcaps/8.png");
 matcapTexture.colorSpace = THREE.SRGBColorSpace;
 
 // Font
@@ -43,7 +43,7 @@ fontLoader.load("/fonts/helvetiker_regular.typeface.json", (font) => {
     bevelThickness: 0.03,
     bevelOffset: 0,
   });
-  const textMaterial = new THREE.MeshMatcapMaterial({ map: matcapTexture });
+  const textMaterial = new THREE.MeshMatcapMaterial({ matcap: matcapTexture });
   const textMesh = new THREE.Mesh(textGeometry, textMaterial);
   scene.add(textMesh);
   textGeometry.computeBoundingBox(); // by default sphere bounding is used on geometry. first call computeBoundingBox to use it
@@ -61,7 +61,7 @@ fontLoader.load("/fonts/helvetiker_regular.typeface.json", (font) => {
 });
 
 const donutGeometry = new THREE.TorusGeometry(0.3, 0.2, 20, 45);
-const donutMaterial = new THREE.MeshMatcapMaterial({ map: matcapTexture });
+const donutMaterial = new THREE.MeshMatcapMaterial({ matcap: matcapTexture });
 
 for (let i = 0; i < 100; i++) {
   const donutMesh = new THREE.Mesh(donutGeometry, donutMaterial);
