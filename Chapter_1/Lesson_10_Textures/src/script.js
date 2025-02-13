@@ -39,10 +39,22 @@ const loadingManager = new THREE.LoadingManager();
 
 // Method 2 of loading textures
 const textureLoader = new THREE.TextureLoader(loadingManager);
-// const colorTexture = textureLoader.load("/textures/door/color.jpg");
+// const texture = textureLoader.load( // event listener of texture loader
+//   "/textures/door/color.jpg",
+//   () => {
+//     console.log("loading finished");
+//   },
+//   () => {
+//     console.log("loading progressing");
+//   },
+//   () => {
+//     console.log("loading error");
+//   }
+// );
+const colorTexture = textureLoader.load("/textures/door/color.jpg");
 // const colorTexture = textureLoader.load("/textures/checkerboard-1024x1024.png"); // to see the artifacts for minification filter
 // const colorTexture = textureLoader.load("/textures/checkerboard-8x8.png"); // to see the magnification filter
-const colorTexture = textureLoader.load("/textures/minecraft.png"); // to see the magnification filter's nearestFilter effect
+// const colorTexture = textureLoader.load("/textures/minecraft.png"); // to see the magnification filter's nearestFilter effect
 colorTexture.colorSpace = THREE.SRGBColorSpace;
 
 // Different types of textures
@@ -77,14 +89,14 @@ scene.add(mesh);
 // colorTexture.wrapT = THREE.MirroredRepeatWrapping;  // for mirrored repeating effect
 // colorTexture.offset.x = 0.5
 // colorTexture.offset.y = 0.5
-// colorTexture.rotation = Math.PI * 0.25
-// colorTexture.center.x = 0.5  // to change pivot point of rotation
-// colorTexture.center.y = 0.5  // to change pivot point of rotation
+colorTexture.rotation = Math.PI * 0.25;
+colorTexture.center.x = 0.5; // to change pivot point of rotation
+colorTexture.center.y = 0.5; // to change pivot point of rotation
 
 // Filters and mapping
 // colorTexture.generateMipmaps = false; // only use minmaps for minFilter otherwise disable it
-colorTexture.minFilter = THREE.NearestFilter;
-colorTexture.magFilter = THREE.NearestFilter;
+// colorTexture.minFilter = THREE.NearestFilter;
+// colorTexture.magFilter = THREE.NearestFilter;
 
 /**
  * Sizes
